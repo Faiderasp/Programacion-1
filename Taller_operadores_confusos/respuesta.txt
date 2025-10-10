@@ -1,3 +1,5 @@
+- Faider Asprilla Torres
+- Juan David Martínez González
 Problema 1: Confusión entre 'and' y 'or':
 
 ¿Es un conductor elegible (AND)? : TRUE Porque las dos condiciones son verdaderas
