@@ -1,0 +1,161 @@
+Problema 1: Confusión entre 'and' y 'or':
+
+¿Es un conductor elegible (AND)? : TRUE Porque las dos condiciones son verdaderas
+¿Es un conductor elegible (OR)? : TRUE Porque al menos una de las dos condiciones son verdaderas
+¿Son estos resultados equivalentes? 'Sí' if resultado1 == resultado2 else 'No' : Sí, los resultados son equivalentes.
+¿Cuándo debería usar 'and' vs 'or'? : Se usa "and" cuando se necesita que las dos condiciones se cumplan y "or" cuando se necesita solo una de las dos.e 
+
+
+Problema 2: Precedencia de operadores lógicos vs comparación
+
+x = 5
+
+x > 3 and x < 10: True, x es mayor que 3 y menor que 10.
+3 < x < 10: True, otra forma de decir que x es mayor que 3 y menor que 10.
+Son equivalentes?: Los resultados son equivalentes debido a que la verificación es la misma, solo que en el segundo resultado se comprime.
+
+
+Comparaciones encadenadas sorprendentes
+
+x < y < x: False
+¿Qué hace esto?: Verifica si y es mayor y menor que x (5) a laa vez, dando False.
+Solución: La evaluación está comprimida, aún así, se evalúa primero {x < y}, y después se evalúa {y < x},
+la primera comparación sería verdadera y la segunda falsa, debido a que 5 es menor que 7 pero 7 no es menor que 5.
+
+
+Problema 3: Confusión con el operador 'not'
+
+a = True
+b = False 
+not a : FALSE porque "a" es TRUE entonces lo niega.
+not b : TRUE porque "b" es FALSE entonces lo niega.
+not a and b : TRUE porque ambos son FALSE entonces sí son iguales.
+not (a and b): {not (a and b)}
+¿Por qué son diferentes?
+
+Solución: El not verifica que la variable posterior o la operación posterior no sea verdadera y 
+retorna su estado contrario.
+
+Entre parentesis: El retorno funciona "La operación no es verdadera 'not (Fallse)'?: True, 
+False
+
+
+Problema 4: Confusión entre '==' e 'is'
+
+lista1 = [1, 2, 3]
+lista2 = [1, 2, 3]
+lista3 = lista1
+
+lista1 == lista2: True, ambas contienen los mismos datos en los mismos índices.
+lista1 is lista2: False, apesar de tener los mismos datos no apuntan a la misma dirección en memoria.
+lista1 == lista3, lista1 is lista3: Ambas True, ya que apuntan a la misma dirección en memoria y contienen los mismos datos.
+¿Qué diferencia hay entre '==' e 'is'?: El operador "==" nos permite saber si dos valores son el mismo mientras que el operador "is" revisa que 
+dos objetos o instancias sean exactamente la misma.
+
+a = 256
+b = 256
+c = 257
+d = 257
+
+Caso especial: Números pequeños y cadenas
+
+a is b: True, apuntan al mismo dato si son datos pequeños.
+c is d: True, apuntan al mismo dato si son datos pequeños.
+
+¿Por qué 'is' funciona diferente con diferentes números?: Para números, Python implementa una optimización llamada "caching de enteros" y "optimización de 
+constantes de flotantes", que hace que las variables que apuntan a enteros pequeños 
+y ciertos flotantes sean el mismo objeto. 
+
+
+Problema 5: Evaluación de cortocircuito
+
+Solución: Esto se debe a que en una comparación de and, si la primera condición es falsa, Python no ejecuta la segunda
+debido a que ya es seguro que el resultado será falso, lo mismo pasa con el or, si la primera condición es verdadera, 
+Python no ejecuta la segunda porque ya es seguro que el resultado va a ser verdadero.
+
+
+Problema 6: Operadores 'in' y 'not in'
+
+frutas = ["manzana", "naranja", "plátano"]
+
+'manzana' in frutas: True -> Manzana está en la lista frutas
+
+'pera' in frutas: False -> Pera no está en la lista frutas
+
+'pera' not in frutas: True -> Pera no está en la lista frutas
+
+# Con cadenas
+
+palabra = "Python"
+
+'P' in palabra: True, P se encuentra es la primera palabra de la cadena.
+
+'p' in palabra: False, p no se encuentra en la cadena, ya que en python P y p son diferentes.
+
+'th' in palabra: True, si se encuentra en la cadena.
+
+¿Es 'in' sensible a mayúsculas/minúsculas?: El 'in' represante si un valor se encuentra contenido en otro, al usarse con 'not'
+evalua si 'n' valor no se encuentra contenido en 'x' valor y este devuelvo un valor booleano.
+
+Problema 7: Valores que evalúan a False
+
+valores = [0, 0.0, "", [], {}, None, False]
+
+Evaluación de valores como booleanos:
+0 ->False
+0.0 ->False
+"" ->False
+[] ->False
+{} ->False
+None ->False
+False ->False
+
+Valores engañosos:
+[''] ->True, porque la lista tiene un elemento (aunque vacío).
+{None: None} ->True, porque el diccionario contiene un par clave-valor.
+" " ->True, porque la cadena tiene un espacio, y no está vacía.
+
+¿Por qué algunos valores vacíos evalúan a False y otros a True?:
+Python considera falsos los valores vacíos (sin contenido), pero si un contenedor (lista, diccionario, cadena) tiene algo dentro, aunque sea vacío o nulo, ya no se considera vacío y se evalúa como True.
+
+Problema 8: Expresiones complejas sin paréntesis
+
+p = True, q = False, r = True
+
+p and q or r = True
+p and (q or r) = True
+(p and q) or r = True
+
+¿Cómo afectan los paréntesis a estas expresiones?:
+Aunque los tres resultados son iguales en este caso, los paréntesis cambian el orden de evaluación.
+
+Sin paréntesis, Python evalúa primero el and y luego el or.
+
+Con paréntesis, podemos alterar esa prioridad para asegurar un orden lógico claro.
+Es buena práctica usarlos para que el código sea más legible y predecible.
+
+Problema 9: Confusión en validación de datos
+
+username = "user123"
+Username válido: True, porque su longitud está entre 3 y 15.
+
+username_corto = "us"
+Validación 1 (and): False
+Validación 2 (comparación encadenada): False
+
+¿Cuál forma es más clara? ¿Son equivalentes?:
+Ambas validaciones son equivalentes, pero la forma encadenada (3 <= len(username) <= 15) es más legible y común en Python, evitando repetir el nombre de la variable.
+
+Problema 10: Lógica compleja de autorización
+
+usuario = {"autenticado": True, "admin": False, "edad": 17, "suscripcion": "premium"}
+
+¿Puede acceder a contenido para adultos?: False, porque es menor de edad.
+¿Puede acceder a área administrativa?: False, porque no es administrador.
+¿Puede acceder a contenido premium?: True, porque está autenticado y tiene suscripción premium.
+
+Después de cambiar admin = True:
+¿Ahora puede acceder a área administrativa?: True, porque cumple ambas condiciones (autenticado y admin).
+
+Solución: La autorización se determina combinando condiciones booleanas.
+and exige cumplir todas las condiciones, mientras que or permite el acceso si se cumple al menos una.
