@@ -1,0 +1,2 @@
+9780134685991|Effective Python|Brett Slatkin|2019|Programación|5
+9781492051367|Fluent Python|Luciano Ramalho|2020|Programación|5

@@ -1,0 +1,29 @@
+E001|Ensalada Mediterránea|entrada|92.00|True
+E002|Crema de Champiñones|entrada|68.00|True
+E003|Guacamole Especial|entrada|79.00|True
+E004|Bruschettas Italianas|entrada|88.00|True
+E005|Rollos Primavera|entrada|74.00|True
+
+P001|Lomo a la Parrilla|plato_fuerte|360.00|True
+P002|Fettuccine al Pesto|plato_fuerte|190.00|True
+P003|Salmón con Mantequilla de Limón|plato_fuerte|335.00|True
+P004|Tacos de Pollo al Chipotle|plato_fuerte|155.00|True
+P005|Pizza Cuatro Quesos|plato_fuerte|205.00|True
+P006|Pollo Teriyaki|plato_fuerte|225.00|True
+P007|Hamburguesa BBQ|plato_fuerte|185.00|True
+P008|Costillas BBQ|plato_fuerte|295.00|True
+
+D001|Brownie con Helado|postre|105.00|True
+D002|Flan Napolitano|postre|78.00|True
+D003|Pastel de Zanahoria|postre|90.00|True
+D004|Mousse de Chocolate|postre|98.00|True
+D005|Crepas de Fresa|postre|102.00|True
+
+B001|Limonada Menta|bebida|48.00|True
+B002|Agua con Gas|bebida|38.00|True
+B003|Café Espresso|bebida|42.00|True
+B004|Jugo de Naranja Natural|bebida|55.00|True
+B005|Té Helado|bebida|47.00|True
+B006|Refresco de Cola|bebida|44.00|True
+B007|Cerveza Artesanal|bebida|70.00|True
+B008|Vino de la Casa|bebida|120.00|True
